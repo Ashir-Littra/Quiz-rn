@@ -13,6 +13,7 @@ function Buutton(props) {
         borderWidth: 1,
         borderColor: 'black',
         alignItems: 'center',
+        justifyContent: 'center',
       }}>
       <Text style={styles.text}>{props.label}</Text>
     </TouchableOpacity>
@@ -21,7 +22,8 @@ function Buutton(props) {
 const styles = StyleSheet.create({
   text: {
     color: 'white',
-    fontSize: 18,
+    fontSize: 28,
+    fontWeight: 'bold',
   },
 });
 

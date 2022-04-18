@@ -1,19 +1,29 @@
-import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {
+  Image,
+  ImageBackground,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 
 import Buutton from './Button';
 import React from 'react';
 
 const Startpage = () => {
   return (
-    <View style={styles.container}>
+    <ImageBackground
+      source={{
+        uri: 'https://www.itl.cat/pngfile/big/240-2405890_whatsapp-background-pictures-background-image-for-app.jpg',
+      }}
+      resizeMode="cover"
+      style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.headerText}>Quiz Master</Text>
       </View>
-      <View style={styles.imageContainer}>
-        <Image style={styles.image} />
-      </View>
-      <Buutton label="START" backgroundColor="red" height={30} width={130} />
-    </View>
+
+      <Buutton label="START" backgroundColor="red" height={50} width={230} />
+    </ImageBackground>
   );
 };
 
@@ -25,9 +35,13 @@ const styles = StyleSheet.create({
   },
   header: {
     padding: 25,
+    paddingVertical: 90,
+    marginBottom: 250,
   },
   headerText: {
-    fontSize: 25,
+    fontSize: 40,
+    fontWeight: 'bold',
+    color: 'white',
   },
 });
 

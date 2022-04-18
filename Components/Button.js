@@ -15,15 +15,15 @@ function Buutton(props) {
         alignItems: 'center',
         justifyContent: 'center',
       }}>
-      <Text style={styles.text}>{props.label}</Text>
+      <Text style={{ color: 'white',
+    fontSize: props.fontSize,
+    fontWeight: 'bold',}}>{props.label}</Text>
     </TouchableOpacity>
   );
 }
 const styles = StyleSheet.create({
   text: {
-    color: 'white',
-    fontSize: 28,
-    fontWeight: 'bold',
+   
   },
 });
 

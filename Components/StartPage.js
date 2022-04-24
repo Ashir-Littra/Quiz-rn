@@ -10,7 +10,7 @@ import {
 import Buutton from './Button';
 import React from 'react';
 
-const Startpage = () => {
+const Startpage = ({navigation}) => {
   return (
     <ImageBackground
       source={{
@@ -22,7 +22,7 @@ const Startpage = () => {
         <Text style={styles.headerText}>Quiz Master</Text>
       </View>
 
-      <Buutton label="START" backgroundColor="red" height={50} width={230} fontSize={40} />
+      <Buutton onPress={()=>navigation.navigate('QuizPage')} label="START" backgroundColor="red" height={50} width={230} fontSize={40} />
     </ImageBackground>
   );
 };

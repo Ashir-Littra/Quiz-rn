@@ -6,6 +6,7 @@ function Buutton(props) {
   console.log();
   return (
     <TouchableOpacity
+    onPress={props.onPress}
       style={{
         backgroundColor: props.backgroundColor,
         height: props.height,

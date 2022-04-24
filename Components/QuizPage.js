@@ -1,9 +1,21 @@
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 
 import Buutton from './Button';
-import React from 'react';
+import React,{useEffect,useState} from 'react';
 
 const QuizPage = () => {
+
+  const [quizData,setQuizData] = useState([])
+  useEffect(()=>{
+    fetchQuiz();
+  },[])
+
+  const fetchQuiz = async () =>{
+      const response = await fetch("https://opentdb.com/api.php?amount=10&category=18&type=multiple");
+    const result = await response.json();
+    console.log(result);
+  }
+  
   return (
     <View style={styles.container}>
       <View style={styles.questionContainer}>

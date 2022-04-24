@@ -1,26 +1,60 @@
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View, ActivityIndicator, Button} from 'react-native';
 
 import Buutton from './Button';
 import React,{useEffect,useState} from 'react';
 
-const QuizPage = () => {
+const QuizPage = ({navigation}) => {
 
   const [quizData,setQuizData] = useState([])
+  const [qno,setQno] = useState(0);
+  const [options,setOptions]= useState([])
+  const [finish,setFinish] = useState(false)
   useEffect(()=>{
     fetchQuiz();
   },[])
+  useEffect(()=>{
+    setOptionfunc();
+  },[qno])
+
+
 
   const fetchQuiz = async () =>{
       const response = await fetch("https://opentdb.com/api.php?amount=10&category=18&type=multiple");
     const result = await response.json();
-    console.log(result);
+    setQuizData(result.results);
+  }
+  const nextQ = () =>{
+    if(qno <= 8){
+setQno(prev => prev+1);
+    }else{
+      setFinish(true)
+    }
+    
+  }
+
+  const setOptionfunc = ()=>{
+    if(quizData.length !== 0){
+      setOptions([...quizData[qno].incorrect_answers,quizData[qno].correct_answer])
+    }
+  }
+
+//   function get_random (list) {
+//   return list[Math.floor((Math.random()*list.length))];
+// }
+
+
+// get_random([2,3,5])
+
+  if(quizData.length === 0){
+    return <ActivityIndicator style={{justifyContent:'center'}}/>
   }
   
   return (
     <View style={styles.container}>
       <View style={styles.questionContainer}>
         <Text style={styles.question}>
-          What is meant by closure in Javascript
+         Q:{qno+1} {quizData[qno].question}
+         {console.log(options)}
         </Text>
       </View>
       <View style={styles.optionContainer}>
@@ -39,10 +73,10 @@ const QuizPage = () => {
   
       </View>
 
-      <View style={styles.buttonsContainer}>
+      {finish ? <Buutton onPress={()=> navigation.navigate('Result')} label="Show Results" backgroundColor="green" height={55} width={330} fontSize={30} /> :  <View style={styles.buttonsContainer}>
         <Buutton label="Skip" backgroundColor="blue" height={35} width={130} fontSize={20} />
-        <Buutton label="Next" backgroundColor="blue" height={35} width={130} fontSize={20}/>
-      </View>
+        <Buutton onPress={nextQ} label="Next" backgroundColor="blue" height={35} width={130} fontSize={20}/>
+      </View>}
     </View>
   );
 };
@@ -58,7 +92,7 @@ const styles = StyleSheet.create({
     paddingHorizontal:5
   },
   question:{
-    fontSize:33,
+    fontSize:26,
     color: 'black',
     fontWeight: 'bold',
   },

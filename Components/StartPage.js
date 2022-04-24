@@ -22,7 +22,7 @@ const Startpage = ({navigation}) => {
         <Text style={styles.headerText}>Quiz Master</Text>
       </View>
 
-      <Buutton onPress={()=>navigation.navigate('QuizPage')} label="START" backgroundColor="red" height={50} width={230} fontSize={40} />
+      <Buutton onPress={()=>navigation.navigate('QuizPage')} label="START" backgroundColor="red" height={60} width={230} fontSize={40} />
     </ImageBackground>
   );
 };

@@ -6,7 +6,7 @@ import Result from './Components/Result';
 import StartPage from './Components/StartPage';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-
+import User from './Components/User';
 const Stack = createNativeStackNavigator();
 const App = () => {
   return (
@@ -29,7 +29,13 @@ const App = () => {
         />
       </Stack.Navigator>
     </NavigationContainer>
+    // <View style={{padding:0,margin:0}}>
+    //   <User />
+    // </View>
   );
 };
 
 export default App;
+
+
+///not gonna waste time on this project for a while i'll start new project
